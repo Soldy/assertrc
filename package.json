@@ -1,6 +1,6 @@
 {
   "name": "assertrc",
-  "version": "0.9.9-alpha",
+  "version": "0.9.9-alphai1",
   "description": "nanoTest assert collection.",
   "main": "index.js",
   "scripts": {
@@ -10,13 +10,11 @@
     "type": "git",
     "url": "https://github.com/Soldy/assertrc"
   },
-  "dependencies": {
-    "typehardeningrc": "^0.9.9-beta3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^7.9.0",
     "interactiveConsole": "0.0.7-alpha0",
-    "nanoTest": "^0.9.9-alpha-5",
+    "nanoTest": "^0.9.9-beta1",
     "nyc": "^15.1.0"
   },
   "keywords": [],
@@ -25,5 +23,5 @@
   "bugs": {
     "url": "https://github.com/Soldy/assertrc/issues"
   },
-  "homepage": "https://github.com/Soldy/poolrc#readme"
+  "homepage": "https://github.com/Soldy/assertrc#readme"
 }
