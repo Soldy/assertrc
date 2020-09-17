@@ -32,6 +32,7 @@ const assertBase = function (){
      */
     this.tests = function(testIn){
         tests = testIn;
+        return true;
     };
     /*
      * @private
@@ -129,20 +130,15 @@ const assertBase = function (){
     };
     /*
      * @param string {value}
-     * @param string {sample}
+     * @param integer {sample}
      * @private
      * boolean
      */
     let length = function(value,sample){
-        if(
-            (typeof value !== 'string' )||
-            (typeof sample !== 'number' )
-        ){
-            if(typeof value !== 'string' )
-                errorAdd(' value not a string \n');
-            if(typeof sample !== 'number' )
-                errorAdd(' sample not a number ');
-        }
+        if(typeof value !== 'string' )
+            errorAdd(' value not a string \n');
+        if(isNaN(sample))
+            errorAdd(' sample not a number ');
         if(errorCheck())
             return false;
         if( value.length === sample )
