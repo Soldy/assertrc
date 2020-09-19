@@ -2,11 +2,11 @@
 
 const assertBase = function (){
     /*
-     * @param any {value}
-     * @param string {rule}
-     * @param any {sample}
+     * @param {any} value
+     * @param {string} rule
+     * @param {any} sample
      * @public
-     * boolean
+     * @return {boolean}
      */
     this.check = function(value, rule, sample){
         errorClean();
@@ -26,9 +26,9 @@ const assertBase = function (){
         return collection[rule.toLowerCase()](value, sample);
     };
     /*
-     * @param object {testsIn}
+     * @param {object} testn
      * @public
-     * boolean
+     * @return boolean
      */
     this.tests = function(testIn){
         tests = testIn;
@@ -36,14 +36,14 @@ const assertBase = function (){
     };
     /*
      * @private
-     * object
+     * @var {object}
      */
     let tests = {};
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @var {boolean}
      */
     let equal = function(value,sample){
         if( value == sample )
@@ -51,10 +51,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let equalType = function(value,sample){
         if( value === sample )
@@ -62,10 +62,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param object {value}
-     * @param object {sample}
+     * @param {object} value
+     * @param {object} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let equalJson = function(value,sample){
         if( JSON.stringify(value) === JSON.stringify(sample) )
@@ -73,10 +73,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let notEqual = function(value,sample){
         if( value != sample )
@@ -84,10 +84,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let notEqualType = function(value,sample){
         if( value !== sample )
@@ -95,10 +95,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param number {value}
-     * @param number {sample}
+     * @param {number} value
+     * @param {number} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let greater = function(value,sample){
         if( typeof value !== 'number' )
@@ -112,10 +112,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param number {value}
-     * @param number {sample}
+     * @param {number} value
+     * @param {number} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let less = function(value,sample){
         if( typeof value !== 'number' )
@@ -129,10 +129,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param string {value}
-     * @param integer {sample}
+     * @param {string} value
+     * @param {integer} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let length = function(value,sample){
         if(typeof value !== 'string' )
@@ -146,10 +146,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let valueEqual = function(value,sample){
         if( value == tests[sample].value )
@@ -157,10 +157,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let valueEqualType = function(value,sample){
         if( value === tests[sample].value )
@@ -168,10 +168,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param object {value}
-     * @param object {sample}
+     * @param {object} value
+     * @param {object} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let valueEqualJson = function(value,sample){
         if( JSON.stringify(value) === JSON.stringify(tests[sample].value) )
@@ -179,10 +179,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let valueNotEqual = function(value,sample){
         if( value !=  tests[sample].value )
@@ -190,10 +190,10 @@ const assertBase = function (){
         return false;
     };
     /*
-     * @param any {value}
-     * @param any {sample}
+     * @param {any} value
+     * @param {any} sample
      * @private
-     * boolean
+     * @return {boolean}
      */
     let valueNotEqualType = function(value,sample){
         if( value !== tests[sample].value)
@@ -289,7 +289,7 @@ const assertBase = function (){
     /*
      * @parm string {err}
      * @private
-     * boolean
+     * @return {boolean}
      */
     let errorAdd = function(err){
         errors.push(err);
@@ -298,7 +298,7 @@ const assertBase = function (){
     /*
      * @parm string {err}
      * @private
-     * boolean
+     * @return {boolean}
      */
     let errorCheck = function(){
         if(errors.length>0)
