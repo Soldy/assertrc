@@ -1,5 +1,11 @@
+/*
+ *  @Soldy\assertrc\2021.02.04\GPL3
+ */
 'use strict';
 
+/*
+ * @prototype
+ */
 const assertBase = function (){
     /*
      * @param {any} value
@@ -45,7 +51,7 @@ const assertBase = function (){
      * @private
      * @var {boolean}
      */
-    let equal = function(value,sample){
+    const equal = function(value,sample){
         if( value == sample )
             return true;
         return false;
@@ -56,7 +62,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let equalType = function(value,sample){
+    const equalType = function(value,sample){
         if( value === sample )
             return true;
         return false;
@@ -67,7 +73,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let equalJson = function(value,sample){
+    const equalJson = function(value,sample){
         if( JSON.stringify(value) === JSON.stringify(sample) )
             return true;
         return false;
@@ -78,7 +84,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let notEqual = function(value,sample){
+    const notEqual = function(value,sample){
         if( value != sample )
             return true;
         return false;
@@ -89,7 +95,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let notEqualType = function(value,sample){
+    const notEqualType = function(value,sample){
         if( value !== sample )
             return true;
         return false;
@@ -100,7 +106,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let greater = function(value,sample){
+    const greater = function(value,sample){
         if( typeof value !== 'number' )
             errorAdd(' value not a number \n');
         if (typeof sample !== 'number' )
@@ -117,7 +123,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let less = function(value,sample){
+    const less = function(value,sample){
         if( typeof value !== 'number' )
             errorAdd(' value not a number \n');
         if (typeof sample !== 'number' )
@@ -134,7 +140,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let length = function(value,sample){
+    const length = function(value,sample){
         if(typeof value !== 'string' )
             errorAdd(' value not a string \n');
         if(isNaN(sample))
@@ -151,7 +157,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let valueEqual = function(value,sample){
+    const valueEqual = function(value,sample){
         if( value == tests[sample].value )
             return true;
         return false;
@@ -173,7 +179,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let valueEqualJson = function(value,sample){
+    const valueEqualJson = function(value,sample){
         if( JSON.stringify(value) === JSON.stringify(tests[sample].value) )
             return true;
         return false;
@@ -184,7 +190,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let valueNotEqual = function(value,sample){
+    const valueNotEqual = function(value,sample){
         if( value !=  tests[sample].value )
             return true;
         return false;
@@ -195,7 +201,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let valueNotEqualType = function(value,sample){
+    const valueNotEqualType = function(value,sample){
         if( value !== tests[sample].value)
             return true;
         return false;
@@ -203,7 +209,7 @@ const assertBase = function (){
     /*
      * @private
      */
-    let collection = {
+    const collection = {
         '=='                 : equal,
         'eq'                 : equal,
         'e'                  : equal,
@@ -291,7 +297,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let errorAdd = function(err){
+    const errorAdd = function(err){
         errors.push(err);
         return true;
     };
@@ -300,7 +306,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let errorCheck = function(){
+    const errorCheck = function(){
         if(errors.length>0)
             return true;
         return false;
@@ -308,10 +314,11 @@ const assertBase = function (){
     /*
      * @private
      */
-    let errorClean = function(){
+    const errorClean = function(){
         errors = [];
     };
 };
-exports.assertBase = assertBase;
+
+exports.base = assertBase;
 
 
