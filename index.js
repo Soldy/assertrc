@@ -147,7 +147,11 @@ const assertBase = function (){
             errorAdd(' sample not a number ');
         if(errorCheck())
             return false;
-        if( value.length === sample )
+        if(typeof sample == 'string')
+            sample = sample.length;
+        if(Number.isInteger(sample) === false)
+            return false;
+        if(value.length === sample )
             return true;
         return false;
     };
