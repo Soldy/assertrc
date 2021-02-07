@@ -1,6 +1,6 @@
 {
   "name": "assertrc",
-  "version": "1.0.2",
+  "version": "1.0.2-rc2",
   "description": "nanoTest assert collection.",
   "main": "index.js",
   "scripts": {
@@ -10,10 +10,17 @@
     "type": "git",
     "url": "https://github.com/Soldy/assertrc"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nano-test-output-cli": "^0.9.9-beta15"
+  },
   "devDependencies": {
-    "interactiveConsole": "0.0.7-alpha0",
-    "nanoTest": "^0.9.9-beta10"
+    "consolebarrc": "0.0.2-rc2",
+    "consolestdiorc": "0.0.2-rc1",
+    "consolestylerc": "0.0.2-rc1",
+    "nanoTest": "^0.9.9-beta15",
+    "sandboxrc": "^0.9.9-beta11",
+    "setuprc": "^0.9.9-beta14",
+    "typehardeningrc": "^0.9.9-beta11"
   },
   "keywords": [],
   "author": "Soldy <npmjs@gidigi.com> (http://gidigi.com)",
