@@ -1,5 +1,5 @@
 /*
- *  @Soldy\assertrc\2021.02.04\GPL3
+ *  @Soldy\assertrc\2021.02.07\GPL3
  */
 'use strict';
 
@@ -39,6 +39,105 @@ const assertBase = function (){
     this.tests = function(testIn){
         tests = testIn;
         return true;
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.equal = function(value,sample){
+        return equal(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.equalType = function(value,sample){
+        return equalType(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.equalJson = function(value,sample){
+        return equalJson(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.notEqual = function(value,sample){
+        return notEqual(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.greater = function(value,sample){
+        return greater(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.less = function(value,sample){
+        return less(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.length = function(value,sample){
+        return length(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.valueEqual = function(value,sample){
+        return valueEqual(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.valueEqualType = function(value,sample){
+        return valueEqualType(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.valueNotEqual = function(value,sample){
+        return valueNotEqual(value,sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @public
+     * @var {boolean}
+     */
+    this.valueNotEqualType = function(value,sample){
+        return valueNotEqualType(value,sample);
     };
     /*
      * @private
