@@ -8,7 +8,7 @@ The assertrc is an alternative shorthanded assert collection.
 
 ```javascript
 
-const assertManager = new (require('./index.js')).base();
+const assertManager = new (require('assertrc')).base();
 
 ```
 
