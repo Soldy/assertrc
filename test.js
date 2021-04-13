@@ -306,7 +306,7 @@ nanoTest.add(
     false
 );
 nanoTest.add(
-    'value equali ok',
+    'value equal ok',
     {
         'function':assertManager.check,
         'options':[1, 'v==', 'a1a'],
@@ -315,7 +315,7 @@ nanoTest.add(
     true
 );
 nanoTest.add(
-    'valie equal fail',
+    'value equal fail',
     {
         'function':assertManager.check,
         'options':[2, 'v==', 'a1a'],
@@ -391,6 +391,67 @@ nanoTest.add(
     {
         'function':assertManager.check,
         'options':[{'t':1}, 'vj==', 'a2a'],
+    },
+    '===',
+    false 
+);
+
+nanoTest.add(
+    'value instanceof ok ',
+    {
+        'function':assertManager.check,
+        'options':[Error('testerror'), 'instanceof', Error],
+    },
+    '===',
+    true 
+);
+
+nanoTest.add(
+    'value instanceof with instance ok',
+    {
+        'function':assertManager.check,
+        'options':[new ArrayBuffer(8), 'instanceof', ArrayBuffer],
+    },
+    '===',
+    true
+);
+
+
+nanoTest.add(
+    'value instanceof with is ok',
+    {
+        'function':assertManager.check,
+        'options':[new Uint8Array([9,5]), 'is', Uint8Array],
+    },
+    '===',
+    true 
+);
+nanoTest.add(
+    'value instanceof faild ',
+    {
+        'function':assertManager.check,
+        'options':[new Error('testerror'), 'instanceof', Uint8Array],
+    },
+    '===',
+    false 
+);
+
+nanoTest.add(
+    'value instanceof with instance faild',
+    {
+        'function':assertManager.check,
+        'options':[new ArrayBuffer(8), 'instanceof', Uint8Array],
+    },
+    '===',
+    false 
+);
+
+
+nanoTest.add(
+    'value instanceof with is faild',
+    {
+        'function':assertManager.check,
+        'options':[new Uint8Array([9,5]), 'is', Error],
     },
     '===',
     false 

@@ -25,11 +25,11 @@ const assertBase = function (){
         if(errorCheck()){
             return false;
         }
-        if(typeof collection[rule.toLowerCase()] === 'undefined')
+        if(typeof _dictonary[rule.toLowerCase()] === 'undefined')
             errorAdd(' Rule not exist ');
         if(errorCheck())
             return false;
-        return collection[rule.toLowerCase()](value, sample);
+        return _check(value, rule, sample);
     };
     /*
      * @param {object} testn
@@ -37,7 +37,7 @@ const assertBase = function (){
      * @return boolean
      */
     this.tests = function(testIn){
-        tests = testIn;
+        _tests = testIn;
         return true;
     };
     /*
@@ -47,7 +47,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.equal = function(value,sample){
-        return equal(value,sample);
+        return _equal(value,sample);
     };
     /*
      * @param {any} value
@@ -56,7 +56,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.equalType = function(value,sample){
-        return equalType(value,sample);
+        return _equalType(value,sample);
     };
     /*
      * @param {any} value
@@ -65,7 +65,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.equalJson = function(value,sample){
-        return equalJson(value,sample);
+        return _equalJson(value,sample);
     };
     /*
      * @param {any} value
@@ -74,7 +74,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.notEqual = function(value,sample){
-        return notEqual(value,sample);
+        return _notEqual(value,sample);
     };
     /*
      * @param {any} value
@@ -83,7 +83,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.greater = function(value,sample){
-        return greater(value,sample);
+        return _greater(value,sample);
     };
     /*
      * @param {any} value
@@ -92,7 +92,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.less = function(value,sample){
-        return less(value,sample);
+        return _less(value,sample);
     };
     /*
      * @param {any} value
@@ -101,7 +101,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.length = function(value,sample){
-        return length(value,sample);
+        return _length(value,sample);
     };
     /*
      * @param {any} value
@@ -110,7 +110,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.valueEqual = function(value,sample){
-        return valueEqual(value,sample);
+        return _valueEqual(value,sample);
     };
     /*
      * @param {any} value
@@ -119,7 +119,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.valueEqualType = function(value,sample){
-        return valueEqualType(value,sample);
+        return _valueEqualType(value,sample);
     };
     /*
      * @param {any} value
@@ -128,7 +128,7 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.valueNotEqual = function(value,sample){
-        return valueNotEqual(value,sample);
+        return _valueNotEqual(value,sample);
     };
     /*
      * @param {any} value
@@ -137,23 +137,21 @@ const assertBase = function (){
      * @var {boolean}
      */
     this.valueNotEqualType = function(value,sample){
-        return valueNotEqualType(value,sample);
+        return _valueNotEqualType(value,sample);
     };
     /*
      * @private
      * @var {object}
      */
-    let tests = {};
+    let _tests = {};
     /*
      * @param {any} value
      * @param {any} sample
      * @private
      * @var {boolean}
      */
-    const equal = function(value,sample){
-        if( value == sample )
-            return true;
-        return false;
+    const _equal = function(value,sample){
+        return (value == sample);
     };
     /*
      * @param {any} value
@@ -161,10 +159,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const equalType = function(value,sample){
-        if( value === sample )
-            return true;
-        return false;
+    const _equalType = function(value,sample){
+        return (value === sample);
     };
     /*
      * @param {object} value
@@ -172,10 +168,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const equalJson = function(value,sample){
-        if( JSON.stringify(value) === JSON.stringify(sample) )
-            return true;
-        return false;
+    const _equalJson = function(value,sample){
+        return (JSON.stringify(value) === JSON.stringify(sample));
     };
     /*
      * @param {any} value
@@ -183,10 +177,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const notEqual = function(value,sample){
-        if( value != sample )
-            return true;
-        return false;
+    const _notEqual = function(value,sample){
+        return (value != sample);
     };
     /*
      * @param {any} value
@@ -194,10 +186,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const notEqualType = function(value,sample){
-        if( value !== sample )
-            return true;
-        return false;
+    const _notEqualType = function(value,sample){
+        return (value !== sample);
     };
     /*
      * @param {number} value
@@ -205,16 +195,14 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const greater = function(value,sample){
+    const _greater = function(value,sample){
         if( typeof value !== 'number' )
             errorAdd(' value not a number \n');
         if (typeof sample !== 'number' )
             errorAdd(' Sample not a number \n');
         if(errorCheck())
             return false;
-        if( value > sample )
-            return true;
-        return false;
+        return (value > sample);
     };
     /*
      * @param {number} value
@@ -222,16 +210,14 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const less = function(value,sample){
+    const _less = function(value,sample){
         if( typeof value !== 'number' )
             errorAdd(' value not a number \n');
         if (typeof sample !== 'number' )
             errorAdd(' Sample not a number \n');
         if(errorCheck())
             return false;
-        if( value < sample )
-            return true;
-        return false;
+        return (value < sample);
     };
     /*
      * @param {string} value
@@ -239,7 +225,7 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const length = function(value,sample){
+    const _length = function(value,sample){
         if(typeof value !== 'string' )
             errorAdd(' value not a string \n');
         if(isNaN(sample))
@@ -250,9 +236,15 @@ const assertBase = function (){
             sample = sample.length;
         if(Number.isInteger(sample) === false)
             return false;
-        if(value.length === sample )
-            return true;
-        return false;
+        return (value.length === sample);
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @private     * @return {boolean}
+     */
+    const _instanceof = function(value,sample){
+        return (value instanceof sample);
     };
     /*
      * @param {any} value
@@ -260,10 +252,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const valueEqual = function(value,sample){
-        if( value == tests[sample].value )
-            return true;
-        return false;
+    const _valueEqual = function(value,sample){
+        return (value == _tests[sample].value);
     };
     /*
      * @param {any} value
@@ -271,10 +261,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    let valueEqualType = function(value,sample){
-        if( value === tests[sample].value )
-            return true;
-        return false;
+    const _valueEqualType = function(value,sample){
+        return (value === _tests[sample].value);
     };
     /*
      * @param {object} value
@@ -282,10 +270,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const valueEqualJson = function(value,sample){
-        if( JSON.stringify(value) === JSON.stringify(tests[sample].value) )
-            return true;
-        return false;
+    const _valueEqualJson = function(value,sample){
+        return (JSON.stringify(value) === JSON.stringify(_tests[sample].value));
     };
     /*
      * @param {any} value
@@ -293,10 +279,8 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const valueNotEqual = function(value,sample){
-        if( value !=  tests[sample].value )
-            return true;
-        return false;
+    const _valueNotEqual = function(value,sample){
+        return (value != _tests[sample].value);
     };
     /*
      * @param {any} value
@@ -304,92 +288,126 @@ const assertBase = function (){
      * @private
      * @return {boolean}
      */
-    const valueNotEqualType = function(value,sample){
-        if( value !== tests[sample].value)
-            return true;
-        return false;
+    const _valueNotEqualType = function(value,sample){
+        return (value !== _tests[sample].value);
+    };
+    /*
+     * @param {any} value
+     * @param {string} rule
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+    */
+    const _check = function(value,rule,sample){
+        return _collection[
+            _dictonary[
+                rule.toLowerCase()
+            ]
+        ](value, sample);
     };
     /*
      * @private
      */
-    const collection = {
-        '=='                 : equal,
-        'eq'                 : equal,
-        'e'                  : equal,
-        'equal'              : equal,
-        'equale'             : equal,
-        '!=='                : notEqual,
-        'neq'                : notEqual,
-        'ne'                 : notEqual,
-        'notequal'           : notEqual,
-        'notequale'          : notEqual,
-        '==='                : equalType,
-        'eqt'                : equalType,
-        'et'                 : equalType,
-        'qt'                 : equalType,
-        'equaltype'          : equalType,
-        'equaletype'         : equalType,
-        '!==='               : notEqualType,
-        'neqt'               : notEqualType,
-        'net'                : notEqualType,
-        'nqt'                : notEqualType,
-        'notequaltype'       : notEqualType,
-        'notequaletype'      : notEqualType,
-        'j=='                : equalJson,
-        'jeq'                : equalJson,
-        'je'                 : equalJson,
-        'jsonequal'          : equalJson,
-        'jsonequale'         : equalJson,
-        '==j'                : equalJson,
-        'eqj'                : equalJson,
-        'ej'                 : equalJson,
-        'equaljson'          : equalJson,
-        'equalejson'         : equalJson,
-        '>'                  : greater,
-        'greater'            : greater,
-        'more'               : greater,
-        'higher'             : greater,
-        'bigger'             : greater,
-        'biger'              : greater,
-        'larger'             : greater,
-        '<'                  : less,
-        'less'               : less,
-        'lower'              : less,
-        'smaller'            : less,
-        'smaler'             : less,
-        'length'             : length,
-        'v=='                : valueEqual,
-        'veq'                : valueEqual,
-        've'                 : valueEqual,
-        'valueequal'         : valueEqual,
-        'valueequale'        : valueEqual,
-        'v!=='               : valueNotEqual,
-        'vneq'               : valueNotEqual,
-        'vne'                : valueNotEqual,
-        'valuenotequal'      : valueNotEqual,
-        'valuenotequale'     : valueNotEqual,
-        'v==='               : valueEqualType,
-        'veqt'               : valueEqualType,
-        'vet'                : valueEqualType,
-        'vqt'                : valueEqualType,
-        'valueequaltype'     : valueEqualType,
-        'valueequaletype   ' : valueEqualType,
-        'v!==='              : valueNotEqualType,
-        'vneqt'              : valueNotEqualType,
-        'vnet'               : valueNotEqualType,
-        'vnqt'               : valueNotEqualType,
-        'valuenotequaltype'  : valueNotEqualType,
-        'valuenotequaletype' : valueNotEqualType,
-        'vj=='               : valueEqualJson,
-        'vjeq'               : valueEqualJson,
-        'vje'                : valueEqualJson,
-        'valuejsonequal'     : valueEqualJson,
-        'valuejsonequale'    : valueEqualJson,
-        'v==j'               : valueEqualJson,
-        'veqj'               : valueEqualJson,
-        'vej'                : valueEqualJson,
-        'valueequaljson'     : valueEqualJson,
-        'valueequalejson'    : valueEqualJson
+    const _collection = {
+        'equal'              : _equal,
+        'notEqual'           : _notEqual,
+        'equalType'          : _equalType,
+        'notEqualType'       : _notEqualType,
+        'equalJson'          : _equalJson,
+        'greater'            : _greater,
+        'less'               : _less,
+        'length'             : _length,
+        'valueEqual'          : _valueEqual,
+        'valueNotEqual'      : _valueNotEqual,
+        'valueEqualType'     : _valueEqualType,
+        'valueNotEqualType'  : _valueNotEqualType,
+        'valueEqualJson'     : _valueEqualJson,
+        'instanceof'         : _instanceof
+    };
+    /*
+     * @private
+     */
+    const _dictonary = {
+        '=='                 : 'equal',
+        'eq'                 : 'equal',
+        'e'                  : 'equal',
+        'equal'              : 'equal',
+        'equale'             : 'equal',
+        '!=='                : 'notEqual',
+        'neq'                : 'notEqual',
+        'ne'                 : 'notEqual',
+        'notequal'           : 'notEqual',
+        'notequale'          : 'notEqual',
+        '==='                : 'equalType',
+        'eqt'                : 'equalType',
+        'et'                 : 'equalType',
+        'qt'                 : 'equalType',
+        'equaltype'          : 'equalType',
+        'equaletype'         : 'equalType',
+        '!==='               : 'notEqualType',
+        'neqt'               : 'notEqualType',
+        'net'                : 'notEqualType',
+        'nqt'                : 'notEqualType',
+        'notequaltype'       : 'notEqualType',
+        'notequaletype'      : 'notEqualType',
+        'j=='                : 'equalJson',
+        'jeq'                : 'equalJson',
+        'je'                 : 'equalJson',
+        'jsonequal'          : 'equalJson',
+        'jsonequale'         : 'equalJson',
+        '==j'                : 'equalJson',
+        'eqj'                : 'equalJson',
+        'ej'                 : 'equalJson',
+        'equaljson'          : 'equalJson',
+        'equalejson'         : 'equalJson',
+        '>'                  : 'greater',
+        'greater'            : 'greater',
+        'more'               : 'greater',
+        'higher'             : 'greater',
+        'bigger'             : 'greater',
+        'biger'              : 'greater',
+        'larger'             : 'greater',
+        '<'                  : 'less',
+        'less'               : 'less',
+        'lower'              : 'less',
+        'smaller'            : 'less',
+        'smaler'             : 'less',
+        'length'             : 'length',
+        'v=='                : 'valueEqual',
+        'veq'                : 'valueEqual',
+        've'                 : 'valueEqual',
+        'valueequal'         : 'valueEqual',
+        'valueequale'        : 'valueEqual',
+        'v!=='               : 'valueNotEqual',
+        'vneq'               : 'valueNotEqual',
+        'vne'                : 'valueNotEqual',
+        'valuenotequal'      : 'valueNotEqual',
+        'valuenotequale'     : 'valueNotEqual',
+        'v==='               : 'valueEqualType',
+        'veqt'               : 'valueEqualType',
+        'vet'                : 'valueEqualType',
+        'vqt'                : 'valueEqualType',
+        'valueequaltype'     : 'valueEqualType',
+        'valueequaletype   ' : 'valueEqualType',
+        'v!==='              : 'valueNotEqualType',
+        'vneqt'              : 'valueNotEqualType',
+        'vnet'               : 'valueNotEqualType',
+        'vnqt'               : 'valueNotEqualType',
+        'valuenotequaltype'  : 'valueNotEqualType',
+        'valuenotequaletype' : 'valueNotEqualType',
+        'vj=='               : 'valueEqualJson',
+        'vjeq'               : 'valueEqualJson',
+        'vje'                : 'valueEqualJson',
+        'valuejsonequal'     : 'valueEqualJson',
+        'valuejsonequale'    : 'valueEqualJson',
+        'v==j'               : 'valueEqualJson',
+        'veqj'               : 'valueEqualJson',
+        'vej'                : 'valueEqualJson',
+        'valueequaljson'     : 'valueEqualJson',
+        'valueequalejson'    : 'valueEqualJson',
+        'instanceof'         : 'instanceof',
+        'instance'           : 'instanceof',
+        'is'                 : 'instanceof'
     };
     /*
      * @private

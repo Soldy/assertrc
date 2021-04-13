@@ -88,6 +88,9 @@ assertManager.tests({
 | smaller             | Less                      |
 | smaler              | Less                      |
 | length              | Length                    |
+| istanceof           | Instance of               |
+| istance             | Instance of               |
+| is                  | Instance of               |
 | v==                 | Value equal               |
 | veq                 | Value equal               |
 | ve                  | Value equal               |
