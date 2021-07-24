@@ -252,7 +252,7 @@ nanoTest.add(
     true
 );
 nanoTest.add(
-    'noti equal type fail',
+    'not equal type fail',
     {
         'function':assertManager.check,
         'options':[1, '!===', 1],
@@ -456,6 +456,96 @@ nanoTest.add(
     '===',
     false 
 );
+nanoTest.add(
+    'result equal ok',
+    {
+        'function':assertManager.check,
+        'options':[1, 'r==', ()=>'1'],
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'result equal fail',
+    {
+        'function':assertManager.check,
+        'options':[2, 'r==', ()=>1],
+    },
+    '===',
+    false
+);
+nanoTest.add(
+    'result not equal fail',
+    {
+        'function':assertManager.check,
+        'options':[1, 'r!==', ()=>1],
+    },
+    '===',
+    false
+);
+nanoTest.add(
+    'result not equal ok',
+    {
+        'function':assertManager.check,
+        'options':[2, 'r!==', ()=>1],
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'result equal ok',
+    {
+        'function':assertManager.check,
+        'options':[1, 'r===', ()=>1],
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'result json equal type fail ',
+    {
+        'function':assertManager.check,
+        'options':[2, 'rj==', ()=>1],
+    },
+    '===',
+    false
+);
+nanoTest.add(
+    'value not equal type ok ',
+    {
+        'function':assertManager.check,
+        'options':[2, 'r!===', ()=>'2'],
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'result json ok ',
+    {
+        'function':assertManager.check,
+        'options':[
+            {'test':1}, 
+            'rj==',
+            ()=>{return {'test':1};}
+        ],
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'result json failed ',
+    {
+        'function':assertManager.check,
+        'options':[
+            {'t':1},
+            'rj==',
+            ()=>{return {'test':1};}
+        ],
+    },
+    '===',
+    false 
+);
+
 
 
 
