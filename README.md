@@ -123,4 +123,36 @@ assertManager.tests({
 | vej                 | Value deep equal          |
 | valueequaljson      | Value deep equal          |
 | valueequalejson     | Value deep equal          |
+| r==                 | Result Equal              |
+| req                 | Result Equal              |
+| re                  | Result Equal              |
+| resultequal         | Result Equal              |
+| resultequale        | Result Equal              |
+| r!==                | Result Not Equal          |
+| rneq                | Result Not Equal          |
+| rne                 | Result Not Equal          |
+| resultnotequal      | Result Not Equal          |
+| resultnotequale     | Result Not Equal          |
+| r===                | Result Equal Type         |
+| reqt                | Result Equal Type         |
+| ret                 | Result Equal Type         |
+| rqt                 | Result Equal Type         |
+| resultequaltype     | Result Equal Type         |
+| resultequaletype    | Result Equal Type         |
+| r!===               | Result Not Equal Type     |
+| rneqt               | Result Not Equal Type     |
+| rnet                | Result Not Equal Type     |
+| rnqt                | Result Not Equal Type     |
+| resultnotequaltype  | Result Not Equal Type     |
+| resultnotequaletype | Result Not Equal Type     |
+| rj==                | Result Equal Json         |
+| rjeq                | Result Equal Json         |
+| rje                 | Result Equal Json         |
+| resultjsonequal     | Result Equal Json         |
+| resultjsonequale    | Result Equal Json         |
+| r==j                | Result Equal Json         |
+| reqj                | Result Equal Json         |
+| rej                 | Result Equal Json         |
+| resultequaljson     | Result Equal Json         |
+| resultequalejson    | Result Equal Json         |
 
