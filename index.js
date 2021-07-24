@@ -293,6 +293,51 @@ const assertBase = function (){
     };
     /*
      * @param {any} value
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+     */
+    const _resultEqual = function(value,sample){
+        return (value == sample());
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+     */
+    const _resultEqualType = function(value,sample){
+        return (value === sample());
+    };
+    /*
+     * @param {object} value
+     * @param {object} sample
+     * @private
+     * @return {boolean}
+     */
+    const _resultEqualJson = function(value,sample){
+        return (JSON.stringify(value) === JSON.stringify(sample()));
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+     */
+    const _resultNotEqual = function(value,sample){
+        return (value != sample());
+    };
+    /*
+     * @param {any} value
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+     */
+    const _resultNotEqualType = function(value,sample){
+        return (value !== sample());
+    };
+    /*
+     * @param {any} value
      * @param {string} rule
      * @param {any} sample
      * @private
@@ -317,97 +362,134 @@ const assertBase = function (){
         'greater'            : _greater,
         'less'               : _less,
         'length'             : _length,
-        'valueEqual'          : _valueEqual,
+        'valueEqual'         : _valueEqual,
         'valueNotEqual'      : _valueNotEqual,
         'valueEqualType'     : _valueEqualType,
         'valueNotEqualType'  : _valueNotEqualType,
         'valueEqualJson'     : _valueEqualJson,
+        'resultEqual'         : _resultEqual,
+        'resultNotEqual'      : _resultNotEqual,
+        'resultEqualType'     : _resultEqualType,
+        'resultNotEqualType'  : _resultNotEqualType,
+        'resultEqualJson'     : _resultEqualJson,
         'instanceof'         : _instanceof
     };
     /*
      * @private
      */
     const _dictonary = {
-        '=='                 : 'equal',
-        'eq'                 : 'equal',
-        'e'                  : 'equal',
-        'equal'              : 'equal',
-        'equale'             : 'equal',
-        '!=='                : 'notEqual',
-        'neq'                : 'notEqual',
-        'ne'                 : 'notEqual',
-        'notequal'           : 'notEqual',
-        'notequale'          : 'notEqual',
-        '==='                : 'equalType',
-        'eqt'                : 'equalType',
-        'et'                 : 'equalType',
-        'qt'                 : 'equalType',
-        'equaltype'          : 'equalType',
-        'equaletype'         : 'equalType',
-        '!==='               : 'notEqualType',
-        'neqt'               : 'notEqualType',
-        'net'                : 'notEqualType',
-        'nqt'                : 'notEqualType',
-        'notequaltype'       : 'notEqualType',
-        'notequaletype'      : 'notEqualType',
-        'j=='                : 'equalJson',
-        'jeq'                : 'equalJson',
-        'je'                 : 'equalJson',
-        'jsonequal'          : 'equalJson',
-        'jsonequale'         : 'equalJson',
-        '==j'                : 'equalJson',
-        'eqj'                : 'equalJson',
-        'ej'                 : 'equalJson',
-        'equaljson'          : 'equalJson',
-        'equalejson'         : 'equalJson',
-        '>'                  : 'greater',
-        'greater'            : 'greater',
-        'more'               : 'greater',
-        'higher'             : 'greater',
-        'bigger'             : 'greater',
-        'biger'              : 'greater',
-        'larger'             : 'greater',
-        '<'                  : 'less',
-        'less'               : 'less',
-        'lower'              : 'less',
-        'smaller'            : 'less',
-        'smaler'             : 'less',
-        'length'             : 'length',
-        'v=='                : 'valueEqual',
-        'veq'                : 'valueEqual',
-        've'                 : 'valueEqual',
-        'valueequal'         : 'valueEqual',
-        'valueequale'        : 'valueEqual',
-        'v!=='               : 'valueNotEqual',
-        'vneq'               : 'valueNotEqual',
-        'vne'                : 'valueNotEqual',
-        'valuenotequal'      : 'valueNotEqual',
-        'valuenotequale'     : 'valueNotEqual',
-        'v==='               : 'valueEqualType',
-        'veqt'               : 'valueEqualType',
-        'vet'                : 'valueEqualType',
-        'vqt'                : 'valueEqualType',
-        'valueequaltype'     : 'valueEqualType',
-        'valueequaletype   ' : 'valueEqualType',
-        'v!==='              : 'valueNotEqualType',
-        'vneqt'              : 'valueNotEqualType',
-        'vnet'               : 'valueNotEqualType',
-        'vnqt'               : 'valueNotEqualType',
-        'valuenotequaltype'  : 'valueNotEqualType',
-        'valuenotequaletype' : 'valueNotEqualType',
-        'vj=='               : 'valueEqualJson',
-        'vjeq'               : 'valueEqualJson',
-        'vje'                : 'valueEqualJson',
-        'valuejsonequal'     : 'valueEqualJson',
-        'valuejsonequale'    : 'valueEqualJson',
-        'v==j'               : 'valueEqualJson',
-        'veqj'               : 'valueEqualJson',
-        'vej'                : 'valueEqualJson',
-        'valueequaljson'     : 'valueEqualJson',
-        'valueequalejson'    : 'valueEqualJson',
-        'instanceof'         : 'instanceof',
-        'instance'           : 'instanceof',
-        'is'                 : 'instanceof'
+        '=='                  : 'equal',
+        'eq'                  : 'equal',
+        'e'                   : 'equal',
+        'equal'               : 'equal',
+        'equale'              : 'equal',
+        '!=='                 : 'notEqual',
+        'neq'                 : 'notEqual',
+        'ne'                  : 'notEqual',
+        'notequal'            : 'notEqual',
+        'notequale'           : 'notEqual',
+        '==='                 : 'equalType',
+        'eqt'                 : 'equalType',
+        'et'                  : 'equalType',
+        'qt'                  : 'equalType',
+        'equaltype'           : 'equalType',
+        'equaletype'          : 'equalType',
+        '!==='                : 'notEqualType',
+        'neqt'                : 'notEqualType',
+        'net'                 : 'notEqualType',
+        'nqt'                 : 'notEqualType',
+        'notequaltype'        : 'notEqualType',
+        'notequaletype'       : 'notEqualType',
+        'j=='                 : 'equalJson',
+        'jeq'                 : 'equalJson',
+        'je'                  : 'equalJson',
+        'jsonequal'           : 'equalJson',
+        'jsonequale'          : 'equalJson',
+        '==j'                 : 'equalJson',
+        'eqj'                 : 'equalJson',
+        'ej'                  : 'equalJson',
+        'equaljson'           : 'equalJson',
+        'equalejson'          : 'equalJson',
+        '>'                   : 'greater',
+        'greater'             : 'greater',
+        'more'                : 'greater',
+        'higher'              : 'greater',
+        'bigger'              : 'greater',
+        'biger'               : 'greater',
+        'larger'              : 'greater',
+        '<'                   : 'less',
+        'less'                : 'less',
+        'lower'               : 'less',
+        'smaller'             : 'less',
+        'smaler'              : 'less',
+        'length'              : 'length',
+        'v=='                 : 'valueEqual',
+        'veq'                 : 'valueEqual',
+        've'                  : 'valueEqual',
+        'valueequal'          : 'valueEqual',
+        'valueequale'         : 'valueEqual',
+        'v!=='                : 'valueNotEqual',
+        'vneq'                : 'valueNotEqual',
+        'vne'                 : 'valueNotEqual',
+        'valuenotequal'       : 'valueNotEqual',
+        'valuenotequale'      : 'valueNotEqual',
+        'v==='                : 'valueEqualType',
+        'veqt'                : 'valueEqualType',
+        'vet'                 : 'valueEqualType',
+        'vqt'                 : 'valueEqualType',
+        'valueequaltype'      : 'valueEqualType',
+        'valueequaletype   '  : 'valueEqualType',
+        'v!==='               : 'valueNotEqualType',
+        'vneqt'               : 'valueNotEqualType',
+        'vnet'                : 'valueNotEqualType',
+        'vnqt'                : 'valueNotEqualType',
+        'valuenotequaltype'   : 'valueNotEqualType',
+        'valuenotequaletype'  : 'valueNotEqualType',
+        'vj=='                : 'valueEqualJson',
+        'vjeq'                : 'valueEqualJson',
+        'vje'                 : 'valueEqualJson',
+        'valuejsonequal'      : 'valueEqualJson',
+        'valuejsonequale'     : 'valueEqualJson',
+        'v==j'                : 'valueEqualJson',
+        'veqj'                : 'valueEqualJson',
+        'vej'                 : 'valueEqualJson',
+        'valueequaljson'      : 'valueEqualJson',
+        'valueequalejson'     : 'valueEqualJson',
+        'r=='                 : 'resultEqual',
+        'req'                 : 'resultEqual',
+        're'                  : 'resultEqual',
+        'resultequal'         : 'resultEqual',
+        'resultequale'        : 'resultEqual',
+        'r!=='                : 'resultNotEqual',
+        'rneq'                : 'resultNotEqual',
+        'rne'                 : 'resultNotEqual',
+        'resultnotequal'      : 'resultNotEqual',
+        'resultnotequale'     : 'resultNotEqual',
+        'r==='                : 'resultEqualType',
+        'reqt'                : 'resultEqualType',
+        'ret'                 : 'resultEqualType',
+        'rqt'                 : 'resultEqualType',
+        'resultequaltype'     : 'resultEqualType',
+        'resultequaletype  '  : 'resultEqualType',
+        'r!==='               : 'resultNotEqualType',
+        'rneqt'               : 'resultNotEqualType',
+        'rnet'                : 'resultNotEqualType',
+        'rnqt'                : 'resultNotEqualType',
+        'resultnotequaltype'  : 'resultNotEqualType',
+        'resultnotequaletype' : 'resultNotEqualType',
+        'rj=='                : 'resultEqualJson',
+        'rjeq'                : 'resultEqualJson',
+        'rje'                 : 'resultEqualJson',
+        'resultjsonequal'     : 'resultEqualJson',
+        'resultjsonequale'    : 'resultEqualJson',
+        'r==j'                : 'resultEqualJson',
+        'reqj'                : 'resultEqualJson',
+        'rej'                 : 'resultEqualJson',
+        'resultequaljson'     : 'resultEqualJson',
+        'resultequalejson'    : 'resultEqualJson',
+        'instanceof'          : 'instanceof',
+        'instance'            : 'instanceof',
+        'is'                  : 'instanceof'
     };
     /*
      * @private
