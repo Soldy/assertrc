@@ -1,6 +1,6 @@
 {
   "name": "assertrc",
-  "version": "1.0.4-rc5",
+  "version": "1.0.4-rc6",
   "description": "nanoTest assert collection.",
   "main": "index.js",
   "scripts": {
