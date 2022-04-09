@@ -545,7 +545,32 @@ nanoTest.add(
     '===',
     false 
 );
-
+nanoTest.add(
+    'error ',
+    {
+        'function':assertManager.check,
+        'options':[
+            {'test':1}, 
+            'error',
+            'anything'
+        ],
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'error ',
+    {
+        'function':assertManager.check,
+        'options':[
+            {'test':1}, 
+            '!error',
+            'anything'
+        ],
+    },
+    '===',
+    true
+);
 
 
 

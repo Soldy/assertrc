@@ -336,6 +336,27 @@ const assertBase = function (){
     const _resultNotEqualType = function(value,sample){
         return (value !== sample());
     };
+
+    /*
+     * Blank result test error type
+     * @param {any} value
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+     */
+    const _valueError = function(value,sample){
+        return true;
+    };
+    /*
+     * Blank result test not error type
+     * @param {any} value
+     * @param {any} sample
+     * @private
+     * @return {boolean}
+     */
+    const _valueNotError = function(value,sample){
+        return true;
+    };
     /*
      * @param {any} value
      * @param {string} rule
@@ -354,25 +375,27 @@ const assertBase = function (){
      * @private
      */
     const _collection = {
-        'equal'              : _equal,
-        'notEqual'           : _notEqual,
-        'equalType'          : _equalType,
-        'notEqualType'       : _notEqualType,
-        'equalJson'          : _equalJson,
-        'greater'            : _greater,
-        'less'               : _less,
-        'length'             : _length,
-        'valueEqual'         : _valueEqual,
-        'valueNotEqual'      : _valueNotEqual,
-        'valueEqualType'     : _valueEqualType,
-        'valueNotEqualType'  : _valueNotEqualType,
-        'valueEqualJson'     : _valueEqualJson,
+        'equal'               : _equal,
+        'notEqual'            : _notEqual,
+        'equalType'           : _equalType,
+        'notEqualType'        : _notEqualType,
+        'equalJson'           : _equalJson,
+        'greater'             : _greater,
+        'less'                : _less,
+        'length'              : _length,
+        'valueEqual'          : _valueEqual,
+        'valueNotEqual'       : _valueNotEqual,
+        'valueEqualType'      : _valueEqualType,
+        'valueNotEqualType'   : _valueNotEqualType,
+        'valueEqualJson'      : _valueEqualJson,
         'resultEqual'         : _resultEqual,
         'resultNotEqual'      : _resultNotEqual,
         'resultEqualType'     : _resultEqualType,
         'resultNotEqualType'  : _resultNotEqualType,
         'resultEqualJson'     : _resultEqualJson,
-        'instanceof'         : _instanceof
+        'instanceof'          : _instanceof,
+        'error'               : _valueError,
+        'notError'            : _valueNotError
     };
     /*
      * @private
@@ -489,7 +512,10 @@ const assertBase = function (){
         'resultequalejson'    : 'resultEqualJson',
         'instanceof'          : 'instanceof',
         'instance'            : 'instanceof',
-        'is'                  : 'instanceof'
+        'is'                  : 'instanceof',
+        'error'               : 'error',
+        'noterror'            : 'notError',
+        '!error'              : 'notError'
     };
     /*
      * @private
