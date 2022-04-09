@@ -20,8 +20,6 @@ const assertBase = function (){
             errorAdd(' value not defined ');
         if(typeof rule === 'undefined')
             errorAdd(' rule not defined ');
-        if(typeof sample === 'undefined')
-            errorAdd(' sample not defined ');
         if(errorCheck()){
             return false;
         }
