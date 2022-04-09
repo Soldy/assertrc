@@ -1,6 +1,7 @@
 
 const nanoTest  = new (require('nanoTest')).test({
-    'debugPrint' : 'short'
+    'progress_bar' : false,
+    'debug_print' : 'short'
 });
 const assertManager = new (require('./index.js')).base();
 
