@@ -16,8 +16,6 @@ const assertBase = function (){
      */
     this.check = function(value, rule, sample){
         errorClean();
-        if(typeof value === 'undefined')
-            errorAdd(' value not defined ');
         if(typeof rule === 'undefined')
             errorAdd(' rule not defined ');
         if(errorCheck()){
