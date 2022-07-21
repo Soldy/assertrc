@@ -24,8 +24,7 @@ nanoTest.add(
         'function':assertManager.check,
         'options':[],
     },
-    '===',
-    false
+    'error',
 );
 nanoTest.add(
     'just value ',
@@ -33,8 +32,7 @@ nanoTest.add(
         'function':assertManager.check,
         'options':[1],
     },
-    '===',
-    false
+    'error',
 );
 nanoTest.add(
     'missing sample',
@@ -91,25 +89,23 @@ nanoTest.add(
     true
 );
 nanoTest.add(
-    'greater fail ',
+    'greater fail value not an integer',
     {
         'function':assertManager.check,
         'options':['a', '>', 0],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
-    'greater fail ',
+    'greater fail sample not an integer',
     {
         'function':assertManager.check,
         'options':[1, '>', 'a'],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
-    'greater fail ',
+    'greater fail equal',
     {
         'function':assertManager.check,
         'options':[1, '>', 1],
@@ -127,22 +123,20 @@ nanoTest.add(
     true
 );
 nanoTest.add(
-    'smaller fail ',
+    'smaller fail value not an integer',
     {
         'function':assertManager.check,
         'options':['a', '<', 2],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
-    'smaller fail ',
+    'smaller fail sample not an integer',
     {
         'function':assertManager.check,
         'options':[1, '<', 'a'],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
     'smaller fail ',
@@ -184,7 +178,7 @@ nanoTest.add(
     'not equal type fail',
     {
         'function':assertManager.check,
-        'options':[1, '!==', '1'],
+        'options':[1, '!==', 1],
     },
     '===',
     false
@@ -238,7 +232,7 @@ nanoTest.add(
     'not equal fail',
     {
         'function':assertManager.check,
-        'options':[1, '!==', 1],
+        'options':[1, '!=', '1'],
     },
     '===',
     false
@@ -271,7 +265,7 @@ nanoTest.add(
     true
 );
 nanoTest.add(
-    'length fail',
+    'length fail higher',
     {
         'function':assertManager.check,
         'options':['a', 'length', 2],
@@ -280,31 +274,28 @@ nanoTest.add(
     false
 );
 nanoTest.add(
-    'length fail',
+    'length fail sample not an integer',
     {
         'function':assertManager.check,
         'options':['a', 'length', 'a'],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
-    'length fail',
+    'length fail sample not an integer',
     {
         'function':assertManager.check,
         'options':['a', 'length', {}],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
-    'length fail',
+    'length faili value is an integer',
     {
         'function':assertManager.check,
         'options':[1, 'length', 'a'],
     },
-    '===',
-    false
+    'error'
 );
 nanoTest.add(
     'value equal ok',

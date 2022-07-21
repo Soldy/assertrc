@@ -15,16 +15,10 @@ const assertBase = function (){
      * @return {boolean}
      */
     this.check = function(value, rule, sample){
-        errorClean();
         if(typeof rule === 'undefined')
-            errorAdd(' rule not defined ');
-        if(errorCheck()){
-            return false;
-        }
+            throw TypeError(' rule is undefined ');
         if(typeof _dictonary[rule.toLowerCase()] === 'undefined')
-            errorAdd(' Rule not exist ');
-        if(errorCheck())
-            return false;
+            throw TypeError(' unsupported rule ');
         return _check(value, rule, sample);
     };
     /*
@@ -193,11 +187,9 @@ const assertBase = function (){
      */
     const _greater = function(value,sample){
         if( typeof value !== 'number' )
-            errorAdd(' value not a number \n');
+            throw TypeError(' value not a number \n');
         if (typeof sample !== 'number' )
-            errorAdd(' Sample not a number \n');
-        if(errorCheck())
-            return false;
+            throw TypeError(' Sample not a number \n');
         return (value > sample);
     };
     /*
@@ -208,11 +200,9 @@ const assertBase = function (){
      */
     const _less = function(value,sample){
         if( typeof value !== 'number' )
-            errorAdd(' value not a number \n');
+            throw Error(' value not a number \n');
         if (typeof sample !== 'number' )
-            errorAdd(' Sample not a number \n');
-        if(errorCheck())
-            return false;
+            throw TypeError(' Sample not a number \n');
         return (value < sample);
     };
     /*
@@ -223,15 +213,13 @@ const assertBase = function (){
      */
     const _length = function(value,sample){
         if(typeof value !== 'string' )
-            errorAdd(' value not a string \n');
+            throw TypeError(' value not a string \n');
         if(isNaN(sample))
-            errorAdd(' sample not a number ');
-        if(errorCheck())
-            return false;
+            throw TypeError(' sample not a number ');
         if(typeof sample == 'string')
             sample = sample.length;
         if(Number.isInteger(sample) === false)
-            return false;
+            throw TypeError(' sample not an integer ');
         return (value.length === sample);
     };
     /*
@@ -402,7 +390,7 @@ const assertBase = function (){
         'e'                   : 'equal',
         'equal'               : 'equal',
         'equale'              : 'equal',
-        '!=='                 : 'notEqual',
+        '!='                  : 'notEqual',
         'neq'                 : 'notEqual',
         'ne'                  : 'notEqual',
         'notequal'            : 'notEqual',
@@ -413,6 +401,7 @@ const assertBase = function (){
         'qt'                  : 'equalType',
         'equaltype'           : 'equalType',
         'equaletype'          : 'equalType',
+        '!=='                 : 'notEqualType',
         '!==='                : 'notEqualType',
         'neqt'                : 'notEqualType',
         'net'                 : 'notEqualType',
@@ -512,35 +501,6 @@ const assertBase = function (){
         'error'               : 'error',
         'noterror'            : 'notError',
         '!error'              : 'notError'
-    };
-    /*
-     * @private
-     */
-    let errors = [];
-    /*
-     * @parm string {err}
-     * @private
-     * @return {boolean}
-     */
-    const errorAdd = function(err){
-        errors.push(err);
-        return true;
-    };
-    /*
-     * @parm string {err}
-     * @private
-     * @return {boolean}
-     */
-    const errorCheck = function(){
-        if(errors.length>0)
-            return true;
-        return false;
-    };
-    /*
-     * @private
-     */
-    const errorClean = function(){
-        errors = [];
     };
 };
 
