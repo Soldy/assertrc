@@ -92,7 +92,7 @@ const assertBase = function (){
     };
     /*
      * @param {any} value
-     * @param {any} sample
+     * @param {integer} sample
      * @public
      * @var {boolean}
      */
@@ -101,7 +101,7 @@ const assertBase = function (){
     };
     /*
      * @param {any} value
-     * @param {any} sample
+     * @param {string} sample
      * @public
      * @var {boolean}
      */
@@ -110,7 +110,7 @@ const assertBase = function (){
     };
     /*
      * @param {any} value
-     * @param {any} sample
+     * @param {string} sample
      * @public
      * @var {boolean}
      */
@@ -119,7 +119,7 @@ const assertBase = function (){
     };
     /*
      * @param {any} value
-     * @param {any} sample
+     * @param {string} sample
      * @public
      * @var {boolean}
      */
@@ -128,7 +128,7 @@ const assertBase = function (){
     };
     /*
      * @param {any} value
-     * @param {any} sample
+     * @param {string} sample
      * @public
      * @var {boolean}
      */
